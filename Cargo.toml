@@ -1,0 +1,17 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[package]
+name = "sample1"
+version = "0.1.0"
+edition = "2018"
+
+#[lib]
+#name = "hello_in_rust_lib"
+#path = "src/lib.rs"
+#crate-type = ["staticlib"]
+
+[dependencies]
+# use Atomic
+#panic-halt = "0.2"
+#compiler_builtins = { version = "=0.1.16" }
+rl78hal = { path = "rl78hal_bindings" }
+

@@ -1,0 +1,37 @@
+[target.rl78-unknown-none-elf] # rl78
+#runner = "rl78-elf-gdb -q -x openocd.gdb"
+rustflags = [
+  "-C", "link-arg=-nostartfiles",
+  # BlueBoard-RL78/G13_64pin
+  "-C", "link-arg=-TR5F100LE.ld",
+  # ?
+  # "-C", "link-arg=-TR5F100LG.ld",
+  # gr-cotton
+  # "-C", "link-arg=-TR5F100LJ.ld",
+]
+
+[target.rl78-none-elf] # rl78
+runner = "rl78-elf-gdb -q -x openocd.gdb"
+rustflags = [
+  "-C", "linker=lld",
+  # if you need to link to pre-compiled C libraries provided by a C toolchain
+  # use GCC as the linker by commenting out both lines above and then
+  # uncommenting the three lines below
+  # "-C", "linker=rl78-elf-gcc",
+  "-C", "link-arg=-nostartfiles",
+  # "-C", "link-arg=-TR5F100LG.ld",
+  # gr-cotton
+  # "-C", "link-arg=-TR5F100LJ.ld",
+]
+
+
+[build]
+target = "rl78-unknown-none-elf" # rl78
+#target = "rl78-none-elf" # rl78
+
+[unstable]
+build-std = ["core", "compiler_builtins", "alloc"]
+build-std-features = ["compiler-builtins-mem"]
+
+[profile.dev]
+panic = "abort"

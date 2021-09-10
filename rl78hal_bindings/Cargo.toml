@@ -1,0 +1,7 @@
+[package]
+name = "rl78hal"
+version = "0.1.0"
+
+[dependencies]
+#cty = "0.2.1"
+
